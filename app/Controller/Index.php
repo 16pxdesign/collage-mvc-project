@@ -18,7 +18,6 @@ class Index extends Controller {
 
     public function test2(){
 
-
         var_dump("<hmtl>2</hmtl>");
     }
 }
