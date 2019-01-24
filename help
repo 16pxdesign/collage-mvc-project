@@ -1,0 +1,29 @@
+In case you are on Ubuntu, edit the file /etc/apache2/apache2.conf (here we have an example of /var/www):
+
+<Directory /var/www/>
+        Options Indexes FollowSymLinks
+        AllowOverride None
+        Require all granted
+</Directory>
+and change it to;
+
+<Directory /var/www/>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+</Directory>
+then,
+
+sudo service apache2 restart
+You may need to also do sudo a2enmod rewrite to enable module rewrite.
+
+=================================
+
+Often 500 Internal Server Error happens if you fail to load the mod_rewrite module.
+
+To enable RewriteEngine On you need to run the following command:
+
+sudo a2enmod rewrite
+
+==============================
+Ustawiony na htaccess chmod 755 -dziala jak cos

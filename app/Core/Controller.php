@@ -10,7 +10,7 @@ class Controller
     function __construct()
     {
         //init view
-        $this->_view = new view();
+        $this->_view = new View();
     }
 
     //import model

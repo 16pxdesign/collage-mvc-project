@@ -3,9 +3,11 @@
 class Bootstrap
 {
     private $_url;
-    private $_controller = 'index';
+    private $_controller = 'Index';
     private $_method = 'index';
     private $_params = [];
+
+
 
     // private $_defaultController;
 
@@ -43,7 +45,9 @@ class Bootstrap
         }
 
         //import controler
-        $file = 'app/Controller/' . $controler . '.php';
+
+        $file = DOCROOT . '/app/Controller/' . $controler . '.php';
+
         if (file_exists($file)) {
             require_once $file;
 
@@ -52,7 +56,7 @@ class Bootstrap
             //import model
             $this->_controller->_loadModel($controler);
         } else {
-            header('Location: ../404.php');
+           // header('Location: ../1.php');
         }
 
 
@@ -75,10 +79,10 @@ class Bootstrap
                 call_user_func_array([$this->_controller, $this->_method], $this->_params);
 
             } else {
-               header('Location: ../404.php');
+               //header('Location: ../3.php');
             }
         } else {
-           header('Location: ../404.php');
+           header('Location: ../2.php');
         }
 
 
