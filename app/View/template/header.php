@@ -10,7 +10,7 @@
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="js/parallax.js-1.5.0/parallax.min.js"></script>
+    <script src="http://www.fourteen4.net/parallax.js-1.5.0/parallax.js"></script>
 </head>
 
 <body>

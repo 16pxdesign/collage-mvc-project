@@ -13,11 +13,24 @@ class Test extends Controller
         parent::__construct($session);
     }
 
+    public function js(){
+        $this->_view->render('template/header');
+        $this->_view->render('js');
+        $this->_view->render('template/footer');
+
+    }
+
     public function run(){
+        $this->_view->render('template/header');
         $this->_view->render('t');
+        $this->_view->render('template/footer');
     }
 
     public function in(){
+
+        if(empty($_POST)){
+            self::redirect('Index/');
+        }
         $errors = array(); //To store errors
         $form_data = array(); //Pass back the data to `form.php`
 
@@ -37,6 +50,7 @@ class Test extends Controller
 
         //Return the data back to form.php
         echo json_encode($form_data);
+
     }
 
 }
