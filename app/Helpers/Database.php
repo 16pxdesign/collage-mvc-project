@@ -9,21 +9,37 @@
 class Database extends PDO
 {
     private $_driver = 'mysql';
-    private $_host = '192.168.1.1:3307';
-    private $_user = 'admin';
-    private $_password = 'donau1';
-    private $_database = 'test';
+    private $_host = '192.168.1.12:3306';
+    private $_user = 'user';
+    private $_password = 'Ineed$$$';
+    private $_database = 'website';
+    private $_char = 'utf8';
+    private $_dsn = null;
+
 
     public function __construct()
     {
-        try {
-            parent::__construct($this->_driver . ':host=' . $this->_host . ';dbname=' . $this->_database, $this->_user, $this->_password);
-            $this->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $this->setAttribute(PDO::MYSQL_ATTR_INIT_COMMAND, "SET NAMES 'utf8'");
-        } catch (PDOException $exception) {
-            //cannot connect procedure
-        }
-
+        $this->_dsn = $this->_driver.':host='.$this->_host.';dbname='.$this->_database.';charset='.$this->_char;
+        $default_options = [
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES => false,
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        ];
+        $options = array_replace($default_options, []);
+        parent::__construct($this->_dsn, $this->_user, $this->_password, $options);
     }
+
+    public function run($sql, $args = NULL)
+    {
+        if (!$args)
+        {
+            return $this->query($sql)->fetchAll();
+        }
+        $stmt = $this->prepare($sql);
+        $stmt->execute($args);
+        return $stmt->fetchAll();
+    }
+
+
 
 }

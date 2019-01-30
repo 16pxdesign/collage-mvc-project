@@ -1,27 +1,33 @@
 <?php
 
+/**
+ * TODO:
+ * -404.php add link
+ */
 class Bootstrap
 {
     private $_url;
     private $_controller = 'Index';
     private $_method = 'index';
     private $_params = [];
+    private $_session;
 
-
+//SESION INIT
 
     // private $_defaultController;
 
     public function __construct()
     {
+
     }
 
     public function init()
     {
-
-//SESION INIT
+        $this->_session = new Session();
         $this->_getUrl();
         $this->_loadControler();
         $this->_loadMethod();
+
 
 
     }
@@ -50,13 +56,12 @@ class Bootstrap
 
         if (file_exists($file)) {
             require_once $file;
-
-
-            $this->_controller = new $controler;
+            $this->_controller = new $controler($this->_session);
             //import model
-            $this->_controller->_loadModel($controler);
+            $this->_controller->_loadModel($controler . "Model");
         } else {
-           // header('Location: ../1.php');
+            //404
+            header('Location: ../1.php');
         }
 
 
@@ -79,9 +84,11 @@ class Bootstrap
                 call_user_func_array([$this->_controller, $this->_method], $this->_params);
 
             } else {
+                //404
                //header('Location: ../3.php');
             }
         } else {
+            //404
            header('Location: ../2.php');
         }
 
