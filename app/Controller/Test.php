@@ -13,43 +13,69 @@ class Test extends Controller
         parent::__construct($session);
     }
 
-    public function js(){
-        $this->_view->render('template/header');
-        $this->_view->render('js');
-        $this->_view->render('template/footer');
+    protected function js(){
+        $this->_view->render('template/new');
 
+    }
+    public function header(){
+        $this->_view->render('index/header');
+        $this->_view->render('index/footer');
     }
 
     public function run(){
-        $this->_view->render('template/header');
-        $this->_view->render('t');
-        $this->_view->render('template/footer');
+        $this->_view->render('index/header');
+        $this->_view->render('test');
+        $this->_view->render('index/footer');
     }
 
     public function in(){
 
-        if(empty($_POST)){
-            self::redirect('Index/');
-        }
-        $errors = array(); //To store errors
-        $form_data = array(); //Pass back the data to `form.php`
+
+        $errorMSG = "";
 
 
-        /* Validate the form on server side */
-        if (empty($_POST['name'])) { //Name cannot be empty
-            $errors['name'] = 'Name cannot be blank';
-        }
-
-        if (!empty($errors)) { //If errors in validation
-            $form_data['success'] = false;
-            $form_data['errors']  = $errors;
-        } else { //If not, process the form, and return true on success
-            $form_data['success'] = true;
-            $form_data['posted'] = 'Data Was Posted Successfully';
+        /* NAME */
+        if (empty($_POST["name"])) {
+            $errorMSG = "<li>Name is required</<li>";
+        } else {
+            $name = $_POST["name"];
         }
 
-        //Return the data back to form.php
-        echo json_encode($form_data);
+
+        /* EMAIL */
+        if (empty($_POST["email"])) {
+            $errorMSG .= "<li>Email is required</li>";
+        } else if(!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+            $errorMSG .= "<li>Invalid email format</li>";
+        }else {
+            $email = $_POST["email"];
+        }
+
+
+        /* MSG SUBJECT */
+        if (empty($_POST["msg_subject"])) {
+            $errorMSG .= "<li>Subject is required</li>";
+        } else {
+            $msg_subject = $_POST["msg_subject"];
+        }
+
+
+        /* MESSAGE */
+        if (empty($_POST["message"])) {
+            $errorMSG .= "<li>Message is required</li>";
+        } else {
+            $message = $_POST["message"];
+        }
+
+
+        if(empty($errorMSG)){
+            $msg = "Name: ".$name.", Email: ".$email.", Subject: ".$msg_subject.", Message:".$message;
+            echo json_encode(['code'=>200, 'msg'=>$msg]);
+            exit;
+        }
+
+
+        echo json_encode(['code'=>404, 'msg'=>$errorMSG]);
 
     }
 

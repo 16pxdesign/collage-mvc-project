@@ -1,9 +1,5 @@
 <?php
 
-/**
- * TODO:
- * -404.php add link
- */
 class Bootstrap
 {
     private $_url;
@@ -55,13 +51,13 @@ class Bootstrap
         $file = DOCROOT . '/app/Controller/' . $controler . '.php';
 
         if (file_exists($file)) {
-            require_once $file;
             $this->_controller = new $controler($this->_session);
             //import model
             $this->_controller->_loadModel($controler . "Model");
         } else {
             //404
-            header('Location: ../1.php');
+            echo "Not controller";
+            //header('Location: ../1.php');
         }
 
 
@@ -81,11 +77,19 @@ class Bootstrap
         //checking and calling method
         if (!empty($this->_method)) {
             if (method_exists($this->_controller, $this->_method)) {
-                call_user_func_array([$this->_controller, $this->_method], $this->_params);
+                $reflection = new ReflectionMethod($this->_controller, $this->_method);
+                if ($reflection->isPublic()){
+                    call_user_func_array([$this->_controller, $this->_method], $this->_params);
+
+                }else{
+                    //404
+                    echo "Not public";
+                }
 
             } else {
                 //404
-               //header('Location: ../3.php');
+                echo "Not method";
+                //header('Location: ../3.php');
             }
         } else {
             //404

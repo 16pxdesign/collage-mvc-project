@@ -22,10 +22,20 @@ class Controller
         $path = 'app/Model/' . $model . '.php';
 
         if (file_exists($path)) {
-            require_once $path;
             $this->_model = new $model();
         }
     }
+    //import model
+    public function getModel($model)
+    {
+        $path = 'app/Model/' . $model . '.php';
+
+        if (file_exists($path)) {
+            return new $model();
+        }
+        return null;
+    }
+
 
     //get url
     protected function _getUrl()

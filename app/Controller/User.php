@@ -17,6 +17,16 @@ class User extends Controller
 
     }
 
+    public function enum(){
+        echo UserRole::EDITOR;
+    }
+
+    public function m(){
+
+        $newmodel = $this->getModel('child');
+        $newmodel->text();
+    }
+
     public function register(){
     $this->_view->render('template/header');
     $this->_view->render('register');

@@ -5,13 +5,13 @@
  * Date: 12/11/2018
  * Time: 08:13
  */
-
+//90.254.138.121
 class Database extends PDO
 {
     private $_driver = 'mysql';
     private $_host = '192.168.1.12:3306';
     private $_user = 'user';
-    private $_password = 'Ineed$$$';
+    private $_password = 'Ineed1$babe';
     private $_database = 'website';
     private $_char = 'utf8';
     private $_dsn = null;

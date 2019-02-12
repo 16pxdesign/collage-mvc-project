@@ -1,0 +1,172 @@
+@import url(https://fonts.googleapis.com/css?family=Fira+Sans:200,400,500);
+
+* {
+    box-sizing: border-box;
+
+    /*
+    border: black 1px solid;
+    */
+}
+
+html, body, form {
+    height: 100%;
+}
+
+.fill {
+    min-height: 100%;
+    height: 100%;
+}
+
+.red {
+    border: 1px red solid;
+}
+
+.blue {
+    border: 1px blue solid;
+}
+
+.login {
+
+}
+
+.login a {
+    font-family: Lato, verdana, sans-serif;
+    font-weight: bold;
+    color: #999 !important;
+    font-size: 15px;
+    text-transform: uppercase;
+    text-decoration: none !important;
+    cursor: pointer;
+}
+
+.login a:hover {
+    color: #00cc00 !important;
+}
+
+.separator {
+    border-right: 1px solid #ccc;
+    height: 20px;
+    line-height: 20px;
+    padding-left: 5px;
+    margin-right: 5px;
+}
+
+.h100 {
+    height: 90px;
+}
+
+.wLogo {
+    width: 300px;
+}
+
+.p-left-5 {
+    padding-right: 5px;
+}
+
+.parallax-container {
+    position: relative;
+    overflow: hidden;
+    height: 380px;
+    color: rgba(255, 255, 255, .9);
+}
+
+.parallax-container .parallax {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+.parallax-container .parallax img {
+    opacity: 0;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+
+.roboto {
+    font-family: 'Roboto';
+}
+
+.osfald {
+    font-family: "Oswald", sans-serif;
+    text-align: center;
+    font-weight: 300 !important;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+}
+
+.fira-font {
+    font-family: 'Fira Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #79838c;
+    margin-top: .8rem;
+    margin-bottom: .5rem;
+    font-weight: 200 !important;
+}
+
+.font {
+    font-family: 'Fira Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #79838c;
+    margin-top: .8rem;
+    margin-bottom: .5rem;
+    font-weight: 200 !important;
+}
+
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(/src/fonts/MaterialIcons-Regular.eot); /* For IE6-8 */
+    src: local('Material Icons'),
+    local('MaterialIcons-Regular'),
+    url(/src/fonts/MaterialIcons-Regular.woff2) format('woff2'),
+    url(https://example.com/MaterialIcons-Regular.woff) format('woff'),
+    url(https://example.com/MaterialIcons-Regular.ttf) format('truetype');
+}
+
+.glyphicon {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.material-icons {
+    position: relative;
+    top: 2px;
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+}

@@ -3,7 +3,7 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="437bcc32-45bd-4f4f-9d77-5d40ffbff787" name="16pxdesign.ml" url="http://16pxdesign.ml">
-        <fileTransfer host="16pxdesign.ml" port="21">
+        <fileTransfer host="16pxdesign.ml" port="21" rootFolder="/var/www/html">
           <advancedOptions>
             <advancedOptions compatibilityMode="true" dataProtectionLevel="Private" forceListCommand="true" passiveMode="true" shareSSLContext="true" showHiddenFiles="true" />
           </advancedOptions>

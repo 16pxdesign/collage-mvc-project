@@ -8,12 +8,21 @@ define('DOCROOT', dirname(__FILE__));
 //Import core
 function autoload($class)
 {
-
+    //var_dump($class);
     $filename = DOCROOT . "/app/Helpers/" . $class . ".php";
     if(file_exists($filename)){
         require_once $filename;
     }
     $filename = DOCROOT . "/app/Core/" . $class . ".php";
+    if (file_exists($filename)) {
+        require_once $filename;
+    }
+
+    $filename = DOCROOT . "/app/Controller/" . $class . ".php";
+    if (file_exists($filename)) {
+        require_once $filename;
+    }
+    $filename = DOCROOT . "/app/Model/" . $class . ".php";
     if (file_exists($filename)) {
         require_once $filename;
     }
