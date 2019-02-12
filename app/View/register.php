@@ -1,3 +1,5 @@
+
+
 <div class="container  d-flex justify-content-center p-4">
     <div class="col-xl-6 col-md-12 align-self-center">
         <form method="post" class=" need-validation" novalidate>
@@ -16,7 +18,11 @@
                 <input type="password" name="password" id="password" class="form-control" required>
                 <div class="invalid-feedback">It can not be empty</div>
             </div>
-
+            <div class="form-group">
+                <label class="text-uppercase" for="password">Repeat Password</label>
+                <input type="password" name="password" id="password2" class="form-control" required>
+                <div class="invalid-feedback">It can not be empty</div>
+            </div>
             <div class="form-group">
                 <label class="text-uppercase" for="email">Email</label>
                 <input type="text" name="email" id="email" class="form-control" required>
@@ -42,7 +48,7 @@
             <div class="row d-flex justify-content-center">
                 <button class="col-12 btn-success text-uppercase p-2" type="submit">Create your account</button>
                 <div class="col-6 pt-3">
-                    <p>Already have an account? <a href="#">Sign in</a>.</p>
+                    <p>Already have an account? <a href="/User/login">Sign in</a>.</p>
                 </div>
             </div>
         </form>
@@ -77,19 +83,21 @@
             //assign to valid fields
             var username = $("#username").val();
             var password = $("#password").val();
+            var password2 = $("#password2").val();
             var email = $("#email").val();
             var firstname = $("#firstname").val();
             var lastname = $("#lastname").val();
 
             $.ajax({
                 type: "POST",
-                url: "/post.php",
+                url: "/Auth/login",
                 dataType: "json",
-                data: {username: username, password: password, email: email, firstname: firstname, lastname: lastname},
+                data: {username: username, password: password, password2: password2, email: email, firstname: firstname, lastname: lastname},
                 success: function (data) {
                     if (data.code == "200") {
-                        window.location.href = "main.php?get=" + data.msg;
+                       // window.location.href = "main.php?get=" + data.msg;
                         // window.location.assign('post.php?get='+data.msg);
+                        addAlert(data.msg);
 
                     } else {
                         addAlert(data.msg);

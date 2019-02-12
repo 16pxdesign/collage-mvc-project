@@ -11,10 +11,32 @@ class User extends Controller
     public function __construct($session)
     {
         parent::__construct($session);
+        if($this->_session->isExist('user')){
+            self::redirect("Account");
+        }
     }
 
     public function login(){
+        $this->_view->render('template/header');
+        $this->_view->render('template/nav');
+        $this->_view->render('login');
+        $this->_view->render('template/footer');
+    }
 
+
+
+    public function register(){
+    $this->_view->render('template/header');
+    $this->_view->render('template/nav');
+    $this->_view->render('register');
+    $this->_view->render('template/footer');
+
+    }
+
+    public function logout()
+    {
+        $this->_session->destroy();
+        self::redirect();
     }
 
     public function enum(){
@@ -25,17 +47,6 @@ class User extends Controller
 
         $newmodel = $this->getModel('child');
         $newmodel->text();
-    }
-
-    public function register(){
-    $this->_view->render('template/header');
-    $this->_view->render('register');
-    }
-
-    public function logout()
-    {
-        $this->_session->destroy();
-        self::redirect('Index/');
     }
 
 }

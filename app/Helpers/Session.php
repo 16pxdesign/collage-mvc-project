@@ -26,6 +26,14 @@ class Session
         session_start();
     }
 
+    public function isExist($key){
+        if(isset($_SESSION[$key]) && !empty($_SESSION[$key])){
+            return true;
+        }
+
+        return false;
+    }
+
     public function get($key, $second_key = false)
     {
 

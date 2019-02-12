@@ -26,16 +26,18 @@ html, body, form {
 }
 
 .login {
-
-}
-
-.login a {
+    padding-top: 15px;
     font-family: Lato, verdana, sans-serif;
     font-weight: bold;
     color: #999 !important;
     font-size: 15px;
     text-transform: uppercase;
+}
+
+.login a {
     text-decoration: none !important;
+    color: #999 !important;
+
     cursor: pointer;
 }
 
@@ -52,11 +54,11 @@ html, body, form {
 }
 
 .h100 {
-    height: 90px;
+    height: 120px;
 }
 
 .wLogo {
-    width: 300px;
+    width: 400px;
 }
 
 .p-left-5 {

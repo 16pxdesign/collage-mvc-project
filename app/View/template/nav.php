@@ -8,25 +8,50 @@
         </div>
         <div class="col-md-3">
 
-            <div class="d-flex justify-content-end login">
-                <a href="User/login"><i class="material-icons p-left-5">touch_app</i>Register</a>
+         <div class="d-flex justify-content-end login">
+             <?php
+             if(empty($data['user'])){
+                 echo "<a href=\"/User/register\"><i class=\"material-icons p-left-5\">touch_app</i>Register</a>";
+                 echo "<div class=\"separator\"></div>";
+                 echo "<a href=\"/User/login\"><i class=\"material-icons p-left-5\">vpn_key</i>Log in</a>";
+             }else{
+                 echo "Hi,  ". $data['user']. ".  "." <a href=\"/Account/logout\">&nbsp Logout <i class=\"material-icons p-left-5\">close</i></a>";
 
-                <div class="separator"></div>
-                <a class=""><i class="material-icons p-left-5">vpn_key</i>Log in</a>
+             }
+
+             ?>
+
+
             </div>
+
+
+
         </div>
     </div>
 </div>
 
-<div class="navbar justify-content-center bg-white" id="nav">
+<nav class="navbar navbar-expand navbar-dark bg-dark" id="nav">
 
-    <a class="active" href="javascript:void(0)">Home</a>
-    <a href="javascript:void(0)">News</a>
-    <a href="javascript:void(0)">Contact</a>
+    <div class="collapse navbar-collapse justify-content-center" >
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Shop</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">About us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Contact us</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
-</div>
 
-<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
 <script><!--header scroll script-->
     $(document).ready(function () {
         var header = $('#nav');
@@ -47,3 +72,4 @@
         });
     });
 </script><!--header scroll script-->
+

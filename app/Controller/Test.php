@@ -13,9 +13,10 @@ class Test extends Controller
         parent::__construct($session);
     }
 
-    protected function js(){
-        $this->_view->render('template/new');
-
+    public function js(){
+        $this->_loadModel('AuthModel');
+        $return = $this->_model->isUserExist('admin','pxdesign@gmail.com');
+        var_dump($return);
     }
     public function header(){
         $this->_view->render('index/header');
@@ -23,9 +24,7 @@ class Test extends Controller
     }
 
     public function run(){
-        $this->_view->render('index/header');
-        $this->_view->render('test');
-        $this->_view->render('index/footer');
+        $this->_session->destroy();
     }
 
     public function in(){
