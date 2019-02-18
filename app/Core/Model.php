@@ -9,6 +9,10 @@ class Model
         $this->db = new Database();
     }
 
+    public function getNavigationItems(){
+        return $this->db->run("select * from website.menu");
+    }
+
 
 }
 

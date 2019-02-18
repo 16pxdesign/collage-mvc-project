@@ -90,14 +90,14 @@
 
             $.ajax({
                 type: "POST",
-                url: "/Auth/login",
+                url: "/Auth/register",
                 dataType: "json",
                 data: {username: username, password: password, password2: password2, email: email, firstname: firstname, lastname: lastname},
                 success: function (data) {
                     if (data.code == "200") {
-                       // window.location.href = "main.php?get=" + data.msg;
+                        window.location.href = "/Account/login";
                         // window.location.assign('post.php?get='+data.msg);
-                        addAlert(data.msg);
+                       // addAlert(data.msg);
 
                     } else {
                         addAlert(data.msg);

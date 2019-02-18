@@ -13,7 +13,9 @@ class IndexModel extends Model
         return $this->db->run("select name,link from top_menu");
     }
 
-
+    public function getCoursesList(){
+        return $this->db->run("select * from website.courses");
+    }
 }
 
 ?>

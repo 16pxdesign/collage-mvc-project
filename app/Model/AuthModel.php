@@ -22,6 +22,8 @@ class AuthModel extends Model
         $st->execute(array($user, $password));
         if ($st->rowCount() > 0)
             return true;
+        else
+            return false;
     }
 
     public function isUserExist($user, $email)
@@ -30,7 +32,22 @@ class AuthModel extends Model
         $st->execute(array($user, $email));
         if ($st->rowCount() > 0)
             return true;
+        else
+            false;
 
+    }
 
+    public function getUser($user){
+        $sql = "select * from website.users where id = ?";
+        $st = $this->db->prepare($sql);
+        $st->execute(array($user));
+        return $st->fetch();
+    }
+
+    public function getUserOnLogin($user,$password){
+        $sql = "select * from website.users where username = ? and password=?";
+        $st = $this->db->prepare($sql);
+        $st->execute(array($user,$password));
+        return $st->fetch();
     }
 }

@@ -26,7 +26,7 @@
 
 
             <div class="row d-flex justify-content-center">
-                <button class="col-6 col-md-12 btn-success text-uppercase p-2" type="submit">Create your account
+                <button class="col-6 col-md-12 btn-success text-uppercase p-2" type="submit">Log in
                 </button>
                 <div class="col-auto pt-1 ">
                     <p>Join us! <a href="/User/register">Register here</a>.</p>

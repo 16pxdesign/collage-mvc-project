@@ -1,14 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: pingu
- * Date: 12-Feb-19
- * Time: 05:24
- */
-
-class Account extends Controller
+class Course extends Controller
 {
-    protected $data;
     public function __construct($session)
     {
         parent::__construct($session);
@@ -22,14 +14,16 @@ class Account extends Controller
     }
 
     public function index(){
-
         $this->_view->render('template/header');
         $this->_view->render('template/nav', $this->data['nav']);
         $this->_view->render('template/footer');
     }
-
-    public function logout(){
-        $this->_session->destroy();
-        self::redirect();
+    public function owned(){
+        $this->data['shop'] = $this->_model->getCoursesList();
+        $this->_view->render('template/header');
+        $this->_view->render('template/nav', $this->data['nav']);
+        $this->_view->render('course/owned', $this->data['shop']);
+        $this->_view->render('template/footer');
     }
+
 }

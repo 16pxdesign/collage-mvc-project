@@ -2,13 +2,12 @@
 /**
  * Created by PhpStorm.
  * User: pingu
- * Date: 12-Feb-19
- * Time: 05:24
+ * Date: 15-Feb-19
+ * Time: 14:12
  */
 
-class Account extends Controller
+class Manage extends Controller
 {
-    protected $data;
     public function __construct($session)
     {
         parent::__construct($session);
@@ -18,18 +17,17 @@ class Account extends Controller
         }
         $this->data['nav'] = array("user" => $this->_session->get('user'),
             "nav" => $this->_model->getNavigationItems());
-
+        //check user role
+        if($this->_session->get('role')<UserRole::EDITOR){
+            $this->_view->render('template/header');
+            $this->_view->render('template/nav', $this->data['nav']);
+            echo "Do not have Access, ask administrator for permition";
+            $this->_view->render('template/footer');
+        }
     }
 
     public function index(){
 
-        $this->_view->render('template/header');
-        $this->_view->render('template/nav', $this->data['nav']);
-        $this->_view->render('template/footer');
     }
 
-    public function logout(){
-        $this->_session->destroy();
-        self::redirect();
-    }
 }

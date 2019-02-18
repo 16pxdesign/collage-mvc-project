@@ -34,18 +34,19 @@
 
     <div class="collapse navbar-collapse justify-content-center" >
         <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="/">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Shop</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">About us</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Contact us</a>
-            </li>
+            <?php
+            if(!empty($data['nav'])){
+                $nav  = $data['nav'];
+                foreach ($nav as $item){
+                    //if item role same as user role
+                    echo '   <li class="nav-item">
+                <a class="nav-link" href="'. $item['url'] .'">'. $item['name'] .'</a>
+            </li>';
+                }
+
+            }
+            ?>
+
         </ul>
     </div>
 </nav>

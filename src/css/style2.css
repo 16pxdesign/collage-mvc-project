@@ -1,16 +1,15 @@
 @import url(https://fonts.googleapis.com/css?family=Fira+Sans:200,400,500);
 
+
 * {
     box-sizing: border-box;
-
     /*
     border: black 1px solid;
     */
+
 }
 
-html, body, form {
-    height: 100%;
-}
+
 
 .fill {
     min-height: 100%;

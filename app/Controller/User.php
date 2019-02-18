@@ -8,17 +8,20 @@
 
 class User extends Controller
 {
+    protected $data;
     public function __construct($session)
     {
         parent::__construct($session);
         if($this->_session->isExist('user')){
             self::redirect("Account");
         }
+        $this->data['nav'] = array("user" => $this->_session->get('user'),
+            "nav" => $this->_model->getNavigationItems());
     }
 
     public function login(){
         $this->_view->render('template/header');
-        $this->_view->render('template/nav');
+        $this->_view->render('template/nav', $this->data['nav']);
         $this->_view->render('login');
         $this->_view->render('template/footer');
     }
@@ -27,7 +30,7 @@ class User extends Controller
 
     public function register(){
     $this->_view->render('template/header');
-    $this->_view->render('template/nav');
+        $this->_view->render('template/nav', $this->data['nav']);
     $this->_view->render('register');
     $this->_view->render('template/footer');
 

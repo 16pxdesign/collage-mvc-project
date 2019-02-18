@@ -46,11 +46,13 @@ class Auth extends Process
         $this->usernameValidation($_POST["username"]);
         $this->passwordValidation($_POST["password"]);
         $this->checkPassword($_POST["username"], $_POST["password"]);
+        $user = $this->_model->getUserOnLogin($_POST["username"], md5($_POST["password"]));
 
         if (empty($this->errorMSG)) {
 
-            $msg = $_POST["username"];
-            $this->_session->set("user", $_POST["username"]);
+            $msg = $user["username"];
+            $this->_session->set("user", $user["username"]);
+            $this->_session->set("role", $user["role"]);
 
             echo json_encode(['code' => 200, 'msg' => $msg]);
             exit;
@@ -58,6 +60,8 @@ class Auth extends Process
 
         echo json_encode(['code' => 404, 'msg' => $this->errorMSG]);
     }
+
+
 
     private function usernameValidation($data)
     {
