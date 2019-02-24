@@ -8,7 +8,7 @@
 
 class Account extends Controller
 {
-    protected $data;
+    protected $data = null;
     public function __construct($session)
     {
         parent::__construct($session);
@@ -22,7 +22,6 @@ class Account extends Controller
     }
 
     public function index(){
-
         $this->_view->render('template/header');
         $this->_view->render('template/nav', $this->data['nav']);
         $this->_view->render('template/footer');

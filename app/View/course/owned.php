@@ -1,3 +1,5 @@
+
+
 <div class="container  ">
     <div class="col-11 align-self-center">
         <div class="row">
@@ -10,14 +12,18 @@
                     echo '
             
                         <div class="col-sm-4 p-4">
-                        <div class="card">
+                        <div class="card">';
+                    if (!empty($item['img'] )) {
+                        echo '
                             <img class="card-img-top" src="' . $item['img'] . '"
-                                 alt="' . $item['name'] . ' image">
+                                 alt="' . $item['name'] . ' image">';
+                    }
+                    echo '
                             <div class="card-body">
                                 <h5 class="card-title">' . $item['name'] . '</h5>
                                 <p class="card-text">' . $item['description'] . ' </p>
                                 <p class="card-text d-flex justify-content-end">
-                                    <button type="button" class="btn btn-lg btn-outline-primary font-weight-light col-8"><i class="fa fa-shopping-cart pr-3" aria-hidden="true"></i>Go to ></button>
+                                    <a href="" type="" class="btn btn-lg btn-outline-primary font-weight-light col-9"><i class="fa fa-play pr-2" aria-hidden="true"></i>Show lessons</a>
                                 </p>
                             </div>
                         </div>

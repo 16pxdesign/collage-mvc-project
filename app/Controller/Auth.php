@@ -52,6 +52,7 @@ class Auth extends Process
 
             $msg = $user["username"];
             $this->_session->set("user", $user["username"]);
+            $this->_session->set("user_id", $user["id"]);
             $this->_session->set("role", $user["role"]);
 
             echo json_encode(['code' => 200, 'msg' => $msg]);

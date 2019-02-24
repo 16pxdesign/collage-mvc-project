@@ -1,10 +1,13 @@
-<div class="container-fluid">
+
+
+<div class="container-fluid position-relative z-ind bg-white" >
     <div class="row justify-content-center">
 
         <div class="col-3 d-none d-lg-block">
         </div>
         <div class="col-md-5 d-flex justify-content-center ">
-            <img src="../src/img/logo.png" class="h100 p-2"/>
+
+            <img src="/src/img/logo.png" class="h100 p-2"/>
         </div>
         <div class="col-md-3">
 
@@ -71,6 +74,8 @@
                 header.removeClass('fixed-top');
             }
         });
+
+
     });
 </script><!--header scroll script-->
 
