@@ -1,11 +1,17 @@
-<div class="container" >
+
+<div class="container">
+
+
     <div class="row justify-content-center">
 
 
+        <?php
+        $subView = new View();
+        $subView->render('template/usernav');
+        ?>
 
 
-        <div class="col-lg-9 px-4 pt-5 ">
-
+        <div class="col p-4">
 
             <div class="mb-3 card ">
                 <div class="table-responsive-xl">
@@ -17,7 +23,7 @@
                             <th class="align-middle bt-0">Lesson</th>
                             <th class="align-middle bt-0" style="width: 10%"></th>
                             <?php
-                            if ($data['manage']){
+                            if($data['manage']){
                                 echo '<th class="align-middle bt-0 " style="width: 10%"> </th>
                             <th class="align-middle bt-0" style="width: 10%"></th>';
                             }
@@ -38,16 +44,19 @@
                                 <div><span>" . $item['name'] . "</span>
                             </td>
 
-                            <td class=\"align-middle \"  >
-                                <a href=\"/Course/lesson/" . $item['lessonid'] . "\" class=\"\"><span class=\"badge badge-success badge-pill\">View</span></a>
-                            </td>";
+                            <td class=\"align-middle \"  >";
+                                if(!$data['manage'])
+                               echo " <a href=\"/Course/lesson/" . $item['lessonid'] . "\" class=\"\"><span class=\"badge badge-success badge-pill\">View</span></a>";
+                                if($data['manage'])
+                               echo "<a href=\"/Manage/lesson/" . $item['lessonid'] . "\" class=\"\"><span class=\"badge badge-success badge-pill\">View</span></a>";
+                            echo "</td>";
 
                             if ($data['manage']){
                                 echo "<td class=\"align-middle\">
-                                <a href=\"/Course/lesson/" . $item['lessonid'] . "\" class=\"\"><span class=\"badge badge-warning badge-pill\">Edit</span></a>
+                                <a href=\"/Manage/lesson/" . $item['lessonid'] . "\" class=\"\"><span class=\"badge badge-warning badge-pill\">Edit</span></a>
                             </td>";
                                 echo "<td class=\"align-middle\">
-                                <a href=\"/Course/lesson/" . $item['lessonid'] . "\" class=\"\"><span class=\"badge badge-danger badge-pill\">Delete</span></a>
+                                <a href=\"/Manage/lesson/" . $item['lessonid'] . "\" class=\"\"><span class=\"badge badge-danger badge-pill\">Delete</span></a>
                             </td>";
                             }
 

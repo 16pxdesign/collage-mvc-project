@@ -13,17 +13,20 @@ class Account extends Controller
     {
         parent::__construct($session);
         $this->data['user'] = $this->_session->get('user');
+        $this->data['role'] = $this->_session->get('role');
         if(empty($this->data['user'])){
             self::redirect("User/login");
         }
         $this->data['nav'] = array("user" => $this->_session->get('user'),
-            "nav" => $this->_model->getNavigationItems());
+            "nav" => $this->_model->getNavigationItems(),
+            "role" => $this->data['role'] );
 
     }
 
     public function index(){
         $this->_view->render('template/header');
         $this->_view->render('template/nav', $this->data['nav']);
+        $this->_view->render('account/user', $this->data['nav']);
         $this->_view->render('template/footer');
     }
 
