@@ -121,7 +121,7 @@ class Auth extends Process
     public function isUserExist($user, $email)
     {
         if ($this->_model->isUserExist($user, $email))
-            $this->errorMSG .= "User exist";
+            $this->errorMSG .= "User or email exist";
     }
 
 }

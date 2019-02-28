@@ -22,7 +22,7 @@ class User extends Controller
     public function login(){
         $this->_view->render('template/header');
         $this->_view->render('template/nav', $this->data['nav']);
-        $this->_view->render('login');
+        $this->_view->render('user/login');
         $this->_view->render('template/footer');
     }
 
@@ -31,7 +31,7 @@ class User extends Controller
     public function register(){
     $this->_view->render('template/header');
         $this->_view->render('template/nav', $this->data['nav']);
-    $this->_view->render('register');
+    $this->_view->render('user/register');
     $this->_view->render('template/footer');
 
     }

@@ -44,6 +44,7 @@ class Manage extends Account
                 $this->_view->render('course/lessonslist', array("lessons" => $this->data['lessons'], "manage" => true));
                 break;
             case "add":
+                $this->_view->render('manage/add_course', array("nav" => $this->data['nav']));
                 break;
             case "edit":
                 break;
