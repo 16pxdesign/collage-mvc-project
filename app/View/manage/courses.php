@@ -6,12 +6,12 @@
 
         <?php
         $subView = new View();
-        $subView->render('template/usernav',$data['nav']['role']);
+        $subView->render('template/usernav', $data['nav']['role']);
         ?>
 
 
         <div class="col p-4">
-            <h2>Your courses:</h2> <a href="/Manage/add" > + Add new</a>
+            <h2>Your courses:</h2> <a href="/Manage/course/add"> + Add new</a>
             <div class="row ">
                 <?php
                 if (!empty($data['all'])) {
@@ -34,16 +34,16 @@
                                 <p class="card-text d-flex justify-content-center">
                                    <div class="row">
                                     <div class="col">
-                                    <a href="/Manage/lesson/view/'.$item['id'].'" >View</a>
+                                    <a href="/Manage/course/view/' . $item['id'] . '" >View</a>
                                     </div>
                                     <div class="col">
-                                    <a href="/Manage/lesson/edit/'.$item['id'].'" >Edit</a>
+                                    <a href="/Manage/course/edit/' . $item['id'] . '" >Edit</a>
                                     </div>
                                     <div class="col">
-                                    <a href="/Manage/lesson/delete/'.$item['id'].'" >Delete</a>
+                                    <a href="/Manage/course/delete/' . $item['id'] . '" >Delete</a>
                                     </div>
                                     
-</div>
+                                    </div>
                                 </p>
                             </div>
                         </div>

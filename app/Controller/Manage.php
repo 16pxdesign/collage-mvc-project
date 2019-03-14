@@ -41,15 +41,22 @@ class Manage extends Account
         switch ($action){
             case "view":
                 $this->data['lessons'] = $this->_model->getLesssons($id);
-                $this->_view->render('course/lessonslist', array("lessons" => $this->data['lessons'], "manage" => true));
+                $this->_view->render('manage/lessonslist',
+                    array("course_id" => $id,
+                        "lessons" => $this->data['lessons'],
+                        "manage" => true,
+                        "nav" => $this->data['nav']));
                 break;
             case "add":
                 $this->_view->render('manage/add_course', array("nav" => $this->data['nav']));
                 break;
             case "edit":
+                $course = $this->_model->getCourseContext($id);
+                $this->_view->render('manage/edit_course', array("nav" => $this->data['nav'], "course" => $course));
                 break;
             case "delete":
-
+                $this->_model->deleteCourse($id);
+                self::redirect("Manage/index");
                 break;
 
         }
@@ -60,7 +67,7 @@ class Manage extends Account
 
     }
 
-    public function lesson($action, $id=false)
+    public function lesson($action, $id=false,$url = false)
     {
         $this->_view->render('template/header');
         $this->_view->render('template/nav', $this->data['nav']);
@@ -72,10 +79,31 @@ class Manage extends Account
                 $this->_view->render('course/lesson', $this->data['lessoncontext']);
                 break;
             case "add":
+                $no = $this->_model->nextLessonNo($id);
+                $this->_view->render('manage/add_lesson', array(
+                    "course_id" => $id,
+                    "no" => $no,
+                    "nav" => $this->data['nav']));
                 break;
             case "edit":
+                if(!$url)
+                    $url = "Mamage/index";
+
+                $lesson = $this->_model->getLessonContext($id);
+                $no = $lesson["no"];
+                $this->_view->render('manage/edit_lesson',
+                    array(
+                        "lesson" => $lesson,
+                    "back_url" => $url,
+                    "course_id" => $id,
+                    "no" => $no,
+                    "nav" => $this->data['nav']));
                 break;
             case "delete":
+                $this->data['lessoncontext'] = $this->_model->getLessonContext($id);
+                $back = $this->data['lessoncontext']['course_id'];
+                $this->_model->deleteLesson($id);
+                self::redirect("Manage/course/view/".$back);
                 break;
 
         }

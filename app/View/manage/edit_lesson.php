@@ -13,21 +13,15 @@
         <!--FORM-->
         <div class="col p-4">
             <form class="need-validation p-4" novalidate>
-                <label><h2>Add new course</h2></label>
+                <label><h2>Add new lesson</h2></label>
                 <div id="alerts"></div>
                 <div class="row">
                     <div class="col">
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <label>Course Name</label>
-                                    <input class="form-control" type="text" name="name" value="" id="name" required>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="form-group">
-                                    <label>Price</label>
-                                    <input class="form-control" type="number" step="0.01" name="price" value="" id="price" required>
+                                    <label>Lesson Name</label>
+                                    <input class="form-control" type="text" name="name" value="<?php echo isset($data["lesson"]["name"]) ? $data["lesson"]["name"]: "" ; ?>" id="name" required>
                                 </div>
                             </div>
                         </div>
@@ -38,7 +32,7 @@
                     <div class="col mb-3">
                         <div class="form-group">
                             <label>Description</label>
-                            <textarea class="form-control" rows="5" name="desc" id="desc"></textarea>
+                            <textarea class="form-control" rows="5" name="desc" id="desc"><?php echo isset($data["lesson"]["content"]) ? $data["lesson"]["content"]: "" ; ?></textarea>
                         </div>
                     </div>
                 </div>
@@ -46,34 +40,18 @@
                 <div class="row">
                     <div class="col mb-3">
                         <div class="form-group">
-                            <label>URL</label>
+                            <label>Youtube</label>
                             <div class="input-group mb-2">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text">Image</div>
+                                    <div class="input-group-text">https://www.youtube.com/watch?v=</div>
                                 </div>
-                                <input type="text" class="form-control" id="img-url" name="url" >
+                                <input type="text" class="form-control" id="img-url" name="url" value="<?php echo isset($data["lesson"]["url"]) ? $data["lesson"]["url"]: "" ; ?>" >
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="row">
 
-                    <div class="col mb-3">
-                        <div class="mb-2"><b>Settings</b></div>
-                        <div class="row">
-                            <div class="col">
-                                <div class="custom-controls-stacked px-2">
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="user-active" value="true"
-                                               checked="">
-                                        <label class="custom-control-label" for="user-active">Active for users</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="row">
                     <div class="col d-flex justify-content-end">
                         <button class="btn btn-primary" type="submit">Save Changes</button>
@@ -114,25 +92,25 @@
 
             //assign to valid fields
             var name = $("#name").val();
-            var price = $("#price").val();
             var url = $("#img-url").val();
-
-            var active = $("#user-active").prop('checked');
             var desc = $("#desc").val();
+            var course_id =" <?php echo isset($data["lesson"]["course_id"]); ?>";
+            var no = "<?php echo $data["no"]; ?>";
+            var id = "<?php echo $data["lesson"]["id"]; ?>";
 
 
             $.ajax({
                 type: "POST",
-                url: "/ProcessManage/addCourse",
+                url: "/ProcessManage/updateLesson",
                 dataType: "json",
-                data: {name: name, price: price, url: url, active: active, desc: desc},
+                data: {name: name, course_id: course_id, url: url, no: no, desc: desc,id: id},
                 success: function (data) {
                     if (data.code == "200") {
                         console.log("Succes");
                         window.location.href = "/Manage/index";
                     } else {
                         addAlert(data.msg);
-                        console.log("err");
+
                     }
                 }
             });

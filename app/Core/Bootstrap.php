@@ -79,6 +79,7 @@ class Bootstrap
             if (method_exists($this->_controller, $this->_method)) {
                 $reflection = new ReflectionMethod($this->_controller, $this->_method);
                 if ($reflection->isPublic()){
+
                     call_user_func_array([$this->_controller, $this->_method], $this->_params);
 
                 }else{

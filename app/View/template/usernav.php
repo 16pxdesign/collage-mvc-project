@@ -1,5 +1,5 @@
 
-<nav class=" d-none d-md-block  col-lg-3 pt-4 red" >
+<nav class=" d-none d-md-block  col-lg-3 pt-4" style="border-right: solid 1px grey ;">
 
     <div class="mb-4">
         <span> User panel </span>

@@ -26,9 +26,39 @@ where id = ?";
         return $st->fetch();
     }
 
+    public function getCourseContext($id){
+        $sql = "select * from website.courses
+where id = ?";
+        $st = $this->db->prepare($sql);
+        $st->execute(array($id));
+        return $st->fetch();
+    }
+
     public function getCourses(){
         $sql = "select * from website.courses;";
         return $this->db->run($sql);
     }
 
+    public function deleteCourse($id){
+        $sql = "DELETE FROM `website`.`courses` WHERE `id`=" . $id . ";";
+        $this->db->run($sql);
+    }
+
+    public function deleteLesson($id){
+        $sql = "DELETE FROM `website`.`lessons` WHERE `id`=" . $id . ";";
+        $this->db->run($sql);
+    }
+    public function nextLessonNo($id){
+        $sql = "select `no` from `website`.`lessons` where `course_id`=? order by `no` desc limit 1";
+        $st = $this->db->prepare($sql);
+        $st->execute(array($id));
+        $result = $st->fetch();
+        $no = isset($result["no"])? $result["no"] : 0 ;
+        var_dump($no);
+        if($no>0){
+            return $no+1;
+            }
+        else
+            return 1;
+    }
 }

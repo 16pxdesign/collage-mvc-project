@@ -10,6 +10,7 @@
         ?>
 
 
+
         <!--FORM-->
         <div class="col p-4">
             <form class="need-validation p-4" novalidate>
@@ -21,13 +22,15 @@
                             <div class="col">
                                 <div class="form-group">
                                     <label>Course Name</label>
-                                    <input class="form-control" type="text" name="name" value="" id="name" required>
+                                    <input class="form-control" type="text" name="name"
+                                           value="<?php echo isset($data["course"]["name"]) ? $data["course"]["name"]: "" ; ?>" id="name"  required>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="form-group">
                                     <label>Price</label>
-                                    <input class="form-control" type="number" step="0.01" name="price" value="" id="price" required>
+                                    <input class="form-control" type="number" step="0.01" name="price"
+                                           value="<?php echo isset($data["course"]["price"]) ? $data["course"]["price"]: "" ; ?>" id="price" required>
                                 </div>
                             </div>
                         </div>
@@ -38,7 +41,8 @@
                     <div class="col mb-3">
                         <div class="form-group">
                             <label>Description</label>
-                            <textarea class="form-control" rows="5" name="desc" id="desc"></textarea>
+                            <textarea class="form-control" rows="5" name="desc" id="desc"><?php echo isset($data["course"]["description"]) ? $data["course"]["description"]: "" ; ?>
+                            </textarea>
                         </div>
                     </div>
                 </div>
@@ -51,22 +55,23 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">Image</div>
                                 </div>
-                                <input type="text" class="form-control" id="img-url" name="url" >
+                                <input type="text" class="form-control" id="img-url" name="url"
+                                       value="<?php echo isset($data["course"]["img"]) ? $data["course"]["img"]: "" ; ?>" >
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="row">
-
+                    <?php echo $data["course"]["active"] == 1  ? "true" : "false" ; ?>
                     <div class="col mb-3">
                         <div class="mb-2"><b>Settings</b></div>
                         <div class="row">
                             <div class="col">
                                 <div class="custom-controls-stacked px-2">
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="user-active" value="true"
-                                               checked="">
+                                        <input type="checkbox" class="custom-control-input" id="user-active"
+                                               <?php echo $data["course"]["active"] == 1  ? "checked=\"\"" : "" ; ?>>
                                         <label class="custom-control-label" for="user-active">Active for users</label>
                                     </div>
                                 </div>
@@ -123,16 +128,16 @@
 
             $.ajax({
                 type: "POST",
-                url: "/ProcessManage/addCourse",
+                url: "/ProcessManage/updateCourse",
                 dataType: "json",
-                data: {name: name, price: price, url: url, active: active, desc: desc},
+                data: {id: <?php echo $data["course"]["id"];?>, name: name, price: price, url: url, active: active, desc: desc},
                 success: function (data) {
                     if (data.code == "200") {
                         console.log("Succes");
                         window.location.href = "/Manage/index";
                     } else {
                         addAlert(data.msg);
-                        console.log("err");
+
                     }
                 }
             });

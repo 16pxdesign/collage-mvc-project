@@ -9,7 +9,7 @@
 class Database extends PDO
 {
     private $_driver = 'mysql';
-    private $_host = '192.168.1.12:3306';
+    private $_host = '16pxdesign.ddns.net:3306';
     private $_user = 'user';
     private $_password = 'Ineed1$babe';
     private $_database = 'website';
