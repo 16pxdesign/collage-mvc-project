@@ -27,7 +27,7 @@ class ProcessManage extends Controller
         $this->priceValidation($_POST["price"]);
         $active = $_POST["active"] ? 1 : 0 ;
         if (empty($this->errorMSG)) {
-            $return = $this->_model->addCourse($_POST["name"],0, $_POST["desc"], $_POST["price"],$active);
+            $return = $this->_model->addCourse($_POST["name"],$_POST["url"], $_POST["desc"], $_POST["price"],$active);
             if (!$return) {
                 error_log("Server had no return any saved value");
                 echo json_encode(['code' => 404, 'msg' => "Server error"]);

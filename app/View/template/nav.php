@@ -38,13 +38,21 @@
     <div class="collapse navbar-collapse justify-content-center" >
         <ul class="navbar-nav">
             <?php
+
             if(!empty($data['nav'])){
                 $nav  = $data['nav'];
                 foreach ($nav as $item){
-                    //if item role same as user role
+                    if(!isset($_SESSION['role'])){
+                        $role=0;
+                    }else{
+                        $role = $_SESSION['role'];
+                    }
+                    if($item['role']<=$role){
                     echo '   <li class="nav-item">
                 <a class="nav-link" href="'. $item['url'] .'">'. $item['name'] .'</a>
             </li>';
+
+                    }
                 }
 
             }

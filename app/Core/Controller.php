@@ -14,7 +14,7 @@ class Controller
         $this->_model = new Model();
         $this->_view = new View();
         $this->_session = $session;
-       URL::routeHist();
+       //URL::routeHist();
        // URL::show();
 
     }

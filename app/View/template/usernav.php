@@ -15,7 +15,6 @@ if($data>=2){
     <div class="mb-4">
         <ul class="nav flex-column">
             <li class="nav-link"><a href="/Manage/course/add" class="nav-link">Add new course</a></li>
-            <li class="nav-link pt-0"><a href="/Manage/lesson/add" class="nav-link">Add new lesson</a></li>
         </ul>
     </div>';
 }

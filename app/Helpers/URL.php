@@ -12,13 +12,15 @@ class URL
     public static $HISTORY;
     public static function routeHist(){
 
-        $url = isset($_GET['url']) ? rtrim($_GET['url'], '/') : 1;
+        $url = isset($_GET['url']) ? rtrim($_GET['url'], '/') : array(1    => "Index");
 
+        if(empty($data))
+            $data = array(1    => "Index");
+
+        if(isset($_COOKIE['history']))
         $data = json_decode($_COOKIE['history'], true);
-        //$data = null;
 
-        if($data==null)
-            $data = array();
+
 
         array_unshift($data, $url);
         if(count($data)>=5){
