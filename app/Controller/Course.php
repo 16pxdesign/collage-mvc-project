@@ -21,8 +21,8 @@ class Course extends Account
 
     public function course($id){
         $this->data['owned'] = $this->_model->isOwned($id,$this->_session->get('user_id'));
-        if(!$this->data['owned'])
-            echo "Go shop";
+        if(!$this->data['owned']&& $_SESSION['role']<=1)
+           self::redirect('Index/shop');
 
         $this->data['lessons'] = $this->_model->getLesssons($id,$this->_session->get('user_id'));
 
@@ -36,8 +36,8 @@ class Course extends Account
     public function lesson($id){
         $course_id = $this->_model->getCourseID($id);
         $this->data['owned'] = $this->_model->isOwned($course_id,$this->_session->get('user_id'));
-        if(!$this->data['owned'])
-            echo "Go shop";
+        if(!$this->data['owned']&& $_SESSION['role']<=1)
+            self::redirect('Index/shop');
 
         $this->data['lessoncontext'] = $this->_model->getLessonContext($id);
 

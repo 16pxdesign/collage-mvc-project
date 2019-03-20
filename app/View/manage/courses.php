@@ -11,7 +11,7 @@
 
 
         <div class="col p-4">
-            <h2>Your courses:</h2> <a href="/Manage/course/add"> + Add new</a>
+            <h2>All courses:</h2> <a href="/Manage/course/add"> + Add new</a>
             <div class="row ">
                 <?php
                 if (!empty($data['all'])) {

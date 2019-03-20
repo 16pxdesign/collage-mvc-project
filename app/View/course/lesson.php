@@ -12,7 +12,14 @@
         ?>
 
         <div class="col p-4">
+            <div class="row justify-content-center p-4" >
+                <h5>
+                    <?php echo $data['name'];?>
+                </h5>
+            </div>
         <div class="row">
+
+
         <?php if(!empty($data['url'])){
           echo " <div class=\"col-md-6\">
             <div class=\"ibox float-e-margins\">
@@ -37,9 +44,7 @@
                 <div class="ibox-content profile-content">
                     <h4><strong>Lesson</strong></h4>
 
-                    <h5>
-                        <?php echo $data['name'];?>
-                    </h5>
+
                     <p>
                         <?php echo $data['content'];?>
 

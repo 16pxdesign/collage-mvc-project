@@ -1,5 +1,8 @@
 <div class="container  ">
     <div class="col-11 align-self-center">
+        <div class="row p-4 ">
+            <h3>Shop:</h3>
+        </div>
         <div class="row">
 
             <?php
